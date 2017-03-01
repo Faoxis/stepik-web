@@ -17,8 +17,6 @@ from .models import Question, Answer
 def test(request, *args, **kwargs):
     return HttpResponse('OK')
 
-SESSION_KEY = 'sessionid'
-
 
 @require_GET
 @login_required(login_url='/login/')
