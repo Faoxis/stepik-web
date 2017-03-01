@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} - add ask
+{% endblock %}
+
+
+{% block content %}
+    <h3>Добавить новый вопрос</h3>
+    <div class="container-fluid">
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
+        <form class="form-horizontal" method="post" action="/ask/">
+
+            <fieldset>
+                {% for field in form %}
+                <div class="control-group {% if field.errors %}has-error{% endif %}">
+                    <label class="control-label">{{ field.label }}</label>
+                    <div class="controls">{{ field }}</div>
+                </div>
+                {% endfor %}
+                {% csrf_token %}
+            </fieldset>
+            <br>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    Сохранить
+                </button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
